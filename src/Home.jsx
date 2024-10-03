@@ -16,9 +16,15 @@ const Home = () => {
   }
 
   useEffect(() => {
-    console.log("use effect ran");
-    console.log(name);
-  }, [name]);
+    fetch('http://localhost:8000/blogs')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        setBlogs(data);
+      });
+  }, []);
 
   return (
     <div className = "home">
